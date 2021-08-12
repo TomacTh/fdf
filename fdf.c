@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcharvet <tcharvet@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: tcharvet <tcharvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 19:09:20 by tcharvet          #+#    #+#             */
-/*   Updated: 2021/08/11 20:41:56 by tcharvet         ###   ########.fr       */
+/*   Updated: 2021/08/12 16:50:23 by tcharvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	check_file(char *filename)
 {
 	int fd;
 
-	if(open(filename, __O_DIRECTORY) != -1)
+	if(open(filename, O_DIRECTORY) != -1)
 	{
 		ft_putstr_fd("Arg must be a map file not a directory\n", 2);
 		exit(1);
@@ -104,13 +104,22 @@ char	*ft_str_tolower(char *str)
 
 
 void	quit(t_fdf *fdf, char *err)
-{
+{	
+	t_mlx *mlx;
+
+	mlx = fdf->mlx;
 	ft_free_map(fdf, 0);
 	if(err)
 	{
 		ft_putstr_fd(err, 2);
 		exit(1);
 	}
+	if (mlx->img)
+		mlx_destroy_image(mlx->ptr, mlx->img->img);
+	if (mlx->win_ptr)
+		mlx_destroy_window(mlx->ptr, mlx->win_ptr);
+	if (mlx->ptr)
+		free((void*)mlx->ptr);
 	exit(0);
 }
 
@@ -149,13 +158,10 @@ void	iso(float *x, float *y, float z)
 	*x =  (*x - *y);
 	*y = ((tempx + tempy) / 2) - z;
 
-	//*y -=   z;
-}
+	//printf("x: %i oldx: %i\n", (int)get_abs(*x), (int)et_abs(tempx));
+	//printf("y: %i oldy: %i\n", (int)get_abs(*y), (int)get_abs(tempy));
 
-int toIsometric2D(double x, double y,double z, double *u, double*v){
-    *u=(x-z)/sqrt(2);
-    *v=(x+2*y+z)/sqrt(6);
-    return 0;
+	//*y -=   z;
 }
 
 
@@ -172,7 +178,7 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 {
 	int		*dst;
 
-	if((x > 0 && y > 0) && (x < img->w &&  y < img->h))
+	if((x >= 0 && y >= 0) && (x < img->w &&  y < img->h))
 	{
 		dst = img->addr + (y * img->w + x);
 		*(unsigned int *)dst = color;
@@ -189,7 +195,13 @@ void	bresenham_algo(t_coordinates coord, t_fdf *fdf)
 
 	origin = fdf->map[(int)coord.y][(int)coord.x];
 	end = fdf->map[(int)coord.y1][(int)coord.x1];
-	int zoom = 10;
+	int zoomy;
+	int zoomx;
+	int zoom;
+
+	zoomx = 1920 / (fdf->width - 1);
+	zoomy = 1080 / (fdf->height - 1);
+	zoom = (int)fmin(zoomx, zoomy) / ((fmax(fdf->width, fdf->height) / fmin(fdf->width, fdf->height)) * 2);
 	//ZOOM//
 	coord.x *= zoom;
 	coord.y *= zoom;
@@ -206,19 +218,19 @@ void	bresenham_algo(t_coordinates coord, t_fdf *fdf)
 	iso(&coord.x, &coord.y, origin.z);
 	iso(&coord.x1, &coord.y1, end.z);
 
-
+	int shiftx = (1920 - (zoom * (fdf->width - 1))) / 2 ;
+	int shifty = (1080 - (zoom * (fdf->height - 1))) / 2 ;
 	//SHIFT//
-	coord.x += fdf->width  * zoom;
-	coord.y += fdf->height * zoom;
-	coord.x1 += fdf->width * zoom;
-	coord.y1 += fdf->height * zoom;
+	coord.x += shiftx;
+	coord.y += shifty;
+	coord.x1 += shiftx;
+	coord.y1 += shifty;
 	//SHIFT//
 	calc_step_and_max(&x_step, &y_step, &max, coord);
 
 	while((int)(coord.x - coord.x1) || (int)(coord.y - coord.y1))
 	{
-		my_mlx_pixel_put(&fdf->mlx->img, coord.x, coord.y, origin.color);
-		//mlx_pixel_put(fdf->mlx->ptr, fdf->mlx->win_ptr, coord.x, coord.y, origin.color);
+		my_mlx_pixel_put(fdf->mlx->img, coord.x, coord.y, origin.color);
 		coord.x += x_step;
 		coord.y += y_step;
 	}
@@ -232,6 +244,8 @@ int	main_loop(t_fdf *fdf)
 
 	y = 0;
 	mlx = fdf->mlx;
+	
+	
 	while(y < fdf->height)
 	{
 		x = 0;
@@ -245,7 +259,9 @@ int	main_loop(t_fdf *fdf)
 		}
 		++y;
 	}
-	mlx_put_image_to_window(mlx->ptr, mlx->win_ptr, fdf->mlx->img.img, 0, 0);
+	
+	
+	mlx_put_image_to_window(mlx->ptr, mlx->win_ptr, fdf->mlx->img->img, 0, 0);
 	return (0);
 }
 
@@ -253,27 +269,37 @@ int	main_loop(t_fdf *fdf)
 //0->0
 //|
 //0
-t_img	new_image(t_fdf *fdf, t_mlx *mlx)
+void	new_image(t_fdf *fdf, t_mlx *mlx, t_img *img)
 {
-	t_img img;
-
-	img.img = mlx_new_image(mlx->ptr, 1920, 1080);
-	if (!img.img)
+	img->img = mlx_new_image(mlx->ptr, 1920, 1080);
+	if (!img->img)
 		quit(fdf, "Cannot create mlx image\n");
-	img.addr = (int *)mlx_get_data_addr(img.img, &(img.bpp),
-			&(img.line), &(img.endian));
-	img.w = 1920;
-	img.h = 1080;
-	return (img);
+	img->addr = (int *)mlx_get_data_addr(img->img, &(img->bpp),
+			&(img->line), &(img->endian));
+	img->w = 1920;
+	img->h = 1080;
+	//mlx->img = &img;
 }
 
 
+int		key_press(int keycode, t_fdf *fdf)
+{
+	if (keycode == 53)
+		quit(fdf, 0);
+	return (0);
+}
 
+int		key_release(int keycode)
+{
+	printf("release: %i\n", keycode);
+	return (0);
+}
 
 int main(int ac, char **av)
 {
 	t_fdf fdf;
 	t_mlx mlx;
+	t_img img;
 
 	check_arg(ac, av[1]);
 	ft_bzero(&fdf, sizeof(t_fdf));
@@ -285,11 +311,26 @@ int main(int ac, char **av)
 	close(fdf.fd);
 	mlx.ptr = mlx_init();
 	mlx.win_ptr = mlx_new_window(mlx.ptr, 1920, 1080, "fdf");
-	mlx.img = new_image(&fdf, fdf.mlx);
+	mlx.img = &img;
+	new_image(&fdf, &mlx, mlx.img);
 	mlx_loop_hook(mlx.ptr, &main_loop, &fdf);
+	mlx_hook(mlx.win_ptr, 2, (1L << 0), &key_press, &fdf);
+	mlx_hook(mlx.win_ptr, 3, (1L << 1), &key_release, &fdf);
 	//mlx_hook(game.info.win, 2, (1L << 0), &key_press, &game);
 	//mlx_hook(game.info.win, 3, (1L << 1), &key_release, &game);
 	//mlx_hook(game.info.win, 33, (1L << 17), quit, &game);
+/* 	int y = -1;
+	int x;
+	while(++y < 1080)
+	{
+		x = -1;
+		while(++x < 1920)
+			my_mlx_pixel_put(fdf.mlx->img, x, y, 0xffffff);
+	}
+
+	mlx_put_image_to_window(mlx.ptr, mlx.win_ptr, mlx.img->img, 0, 0);
+	ft_bzero(img.addr, (sizeof(unsigned int) * 1920 * 1080));
+	mlx_put_image_to_window(mlx.ptr, mlx.win_ptr, mlx.img->img, 0, 0); */
 	mlx_loop(mlx.ptr);
 	return (0);
 

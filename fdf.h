@@ -35,12 +35,12 @@ typedef struct	s_mlx
 {
 	void	*ptr;
 	void	*win_ptr;
-	t_img	img;
+	t_img	*img;
 }				t_mlx;
 
 typedef	struct	s_point
 {
-	unsigned int	z;
+	int	z;
 	int				color;
 }					t_point;
 
