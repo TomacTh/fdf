@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcharvet <tcharvet@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: tcharvet <tcharvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 18:21:21 by tcharvet          #+#    #+#             */
-/*   Updated: 2021/08/13 11:43:59 by tcharvet         ###   ########.fr       */
+/*   Updated: 2021/08/13 14:30:41 by tcharvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "ft_fdf.h"
 
 void	fill_color_line(t_point *point, char **strs)
 {

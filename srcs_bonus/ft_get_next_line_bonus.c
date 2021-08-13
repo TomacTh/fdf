@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_get_next_line_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcharvet <tcharvet@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: tcharvet <tcharvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/01 14:18:11 by tcharvet          #+#    #+#             */
-/*   Updated: 2021/08/13 11:39:46 by tcharvet         ###   ########.fr       */
+/*   Created: 2021/08/13 14:55:57 by tcharvet          #+#    #+#             */
+/*   Updated: 2021/08/13 17:48:45 by tcharvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "ft_fdf_bonus.h"
 
 static int	error(char **buff, char **line, int fd)
 {

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi_base.c                                     :+:      :+:    :+:   */
+/*   ft_atoi_base_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcharvet <tcharvet@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: tcharvet <tcharvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/09 10:27:59 by tcharvet          #+#    #+#             */
-/*   Updated: 2021/08/13 11:40:14 by tcharvet         ###   ########.fr       */
+/*   Created: 2021/08/13 17:44:00 by tcharvet          #+#    #+#             */
+/*   Updated: 2021/08/13 17:48:55 by tcharvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "ft_fdf_bonus.h"
 
 int	is_space(char c)
 {

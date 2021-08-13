@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcharvet <tcharvet@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: tcharvet <tcharvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 12:58:09 by tcharvet          #+#    #+#             */
-/*   Updated: 2021/08/04 19:13:39 by tcharvet         ###   ########.fr       */
+/*   Updated: 2021/08/13 14:30:41 by tcharvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "ft_fdf.h"
 
 int	protect_malloc(void **ptr, size_t lenght)
 {
