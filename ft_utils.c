@@ -6,7 +6,7 @@
 /*   By: tcharvet <tcharvet@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 14:28:37 by tcharvet          #+#    #+#             */
-/*   Updated: 2021/08/10 15:53:24 by tcharvet         ###   ########.fr       */
+/*   Updated: 2021/08/13 11:49:15 by tcharvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,4 +129,3 @@ char	*ft_strcat(char *dest, const char *src)
 	}
 	return (dest);
 }
-

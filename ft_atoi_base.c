@@ -6,18 +6,18 @@
 /*   By: tcharvet <tcharvet@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 10:27:59 by tcharvet          #+#    #+#             */
-/*   Updated: 2021/08/09 11:38:33 by tcharvet         ###   ########.fr       */
+/*   Updated: 2021/08/13 11:40:14 by tcharvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int		is_space(char c)
+int	is_space(char c)
 {
 	return (c == 32 || (c >= 9 && c <= 13));
 }
 
-int		is_error(char *str)
+int	is_error(char *str)
 {
 	int	i;
 	int	j;
@@ -39,7 +39,7 @@ int		is_error(char *str)
 	return (0);
 }
 
-int		is_inbase(char c, char *base)
+int	is_inbase(char c, char *base)
 {
 	int	index;
 
@@ -53,7 +53,7 @@ int		is_inbase(char c, char *base)
 	return (-1);
 }
 
-int		ft_atoi_base(char *str, char *base)
+int	ft_atoi_base(char *str, char *base)
 {
 	int	nb;
 	int	sign;

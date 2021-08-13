@@ -6,7 +6,7 @@
 /*   By: tcharvet <tcharvet@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 18:21:21 by tcharvet          #+#    #+#             */
-/*   Updated: 2021/08/11 15:01:49 by tcharvet         ###   ########.fr       */
+/*   Updated: 2021/08/13 11:43:59 by tcharvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,19 @@ void	fill_color_line(t_point *point, char **strs)
 	char	*str_color;
 
 	str_color = 0;
-	if(tab_len((void **)strs) == 2)
+	if (tab_len((void **)strs) == 2)
 	{
 		str_color = strs[1];
 		if ((ft_strlen(str_color) > 2))
 		{
-			if(!ft_strncmp(str_color, "0x", 2))
+			if (!ft_strncmp(str_color, "0x", 2))
 			{
 				str_color = ft_str_tolower(str_color);
 				point->color = ft_atoi_base(&str_color[2], "0123456789abcdef");
 			}
 			else
 				point->color = ft_atoi(str_color);
-			if(! point->color)
+			if (! point->color)
 				point->color = 0x00ffffff;
 		}
 	}
@@ -37,13 +37,13 @@ void	fill_color_line(t_point *point, char **strs)
 		point->color = 0x00ffffff;
 }
 
-int fill_map_line(t_fdf *fdf, char *str, char **strs, unsigned int len)
+int	fill_map_line(t_fdf *fdf, char *str, char **strs, unsigned int len)
 {
 	unsigned int	i;
 	char			**strs_color;
 
 	i = 0;
-	if (!protect_malloc((void**)&fdf->map[len], sizeof(t_point) * fdf->width))
+	if (!protect_malloc((void **)&fdf->map[len], sizeof(t_point) * fdf->width))
 		return (recursive_error(str, strs, len - 1, fdf));
 	while (strs[i])
 	{
@@ -65,20 +65,20 @@ int fill_map_line(t_fdf *fdf, char *str, char **strs, unsigned int len)
 
 int	eof_recursion(t_fdf *fdf, char *str, unsigned int len)
 {
-	char **strs;
+	char	**strs;
 
 	strs = 0;
 	fdf->height = len;
-	if(*str)
+	if (*str)
 		++fdf->height;
-	if	(!protect_malloc((void**)&fdf->map, sizeof(t_point*) * fdf->height))
+	if (!protect_malloc((void **)&fdf->map, sizeof(t_point *) * fdf->height))
 		return (recursive_error(str, strs, len, fdf));
 	if (*str)
 	{
 		strs = ft_split(str, ' ');
-		if	(!strs)
+		if (!strs)
 			return (recursive_error(str, strs, len + 1, fdf));
-		fdf->width = tab_len((void**)strs);
+		fdf->width = tab_len((void **)strs);
 		fill_map_line(fdf, str, strs, len);
 	}
 	else
@@ -88,19 +88,19 @@ int	eof_recursion(t_fdf *fdf, char *str, unsigned int len)
 
 int	destack_recursion(t_fdf *fdf, char *str, unsigned int len)
 {
-	char	 		**strs;
+	char			**strs;
 	unsigned int	tablen;
 
 	strs = ft_split(str, ' ');
-	if	(!strs)
+	if (!strs)
 		return (recursive_error(str, strs, len + 1, fdf));
-	tablen = tab_len((void**)strs);
+	tablen = tab_len((void **)strs);
 	if (!fdf->width)
 		fdf->width = tablen;
 	else
 	{
-		if(tablen != fdf->width)
-			return recursive_error(str, strs, len + 1, fdf);
+		if (tablen != fdf->width)
+			return (recursive_error(str, strs, len + 1, fdf));
 	}
 	return (fill_map_line(fdf, str, strs, len));
 }
@@ -111,10 +111,10 @@ int	recursive_parse(t_fdf *fdf, unsigned int len)
 	int		i;
 
 	str = 0;
-	if(fdf->error_code)
+	if (fdf->error_code)
 		return (recursive_error(str, 0, len, fdf));
 	i = get_next_line(fdf->fd, &str);
-	if(i == -1)
+	if (i == -1)
 		return (recursive_error(str, 0, len, fdf));
 	else
 	{

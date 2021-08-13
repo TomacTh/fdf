@@ -6,7 +6,7 @@
 /*   By: tcharvet <tcharvet@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 14:18:11 by tcharvet          #+#    #+#             */
-/*   Updated: 2021/08/10 16:08:54 by tcharvet         ###   ########.fr       */
+/*   Updated: 2021/08/13 11:39:46 by tcharvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ char	*ft_strchr(const char *s, int c)
 		return (ptr);
 	return (0);
 }
-
 
 static char	*new_line(char *str)
 {
@@ -66,7 +65,7 @@ static int	split_line(char **line, char **content)
 	return (1);
 }
 
-int			get_next_line(int fd, char **line)
+int	get_next_line(int fd, char **line)
 {
 	static char	*content[256];
 	char		*buff;
@@ -89,5 +88,3 @@ int			get_next_line(int fd, char **line)
 		return (-1);
 	return (split_line(line, &content[fd]));
 }
-
-

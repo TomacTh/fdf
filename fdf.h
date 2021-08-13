@@ -12,6 +12,7 @@
 # include <stdio.h>
 
 # define BUFFER_SIZE 4096
+# define ESC_KEY 53
 
 typedef struct s_gnl
 {
@@ -31,27 +32,26 @@ typedef struct s_img {
 	int		endian;
 }				t_img;
 
-typedef struct	s_mlx
+typedef struct s_mlx
 {
 	void	*ptr;
 	void	*win_ptr;
 	t_img	*img;
 }				t_mlx;
 
-typedef	struct	s_point
+typedef struct s_point
 {
 	int	z;
-	int				color;
-}					t_point;
+	int	color;
+}			t_point;
 
-typedef struct	s_coordinates
+typedef struct s_coordinates
 {
-	float x;
-	float y;
-	float x1;
-	float y1;
+	float	x;
+	float	y;
+	float	x1;
+	float	y1;
 }				t_coordinates;
-
 
 typedef struct s_fdf
 {
@@ -61,30 +61,34 @@ typedef struct s_fdf
 	unsigned int	height;
 	int				fd;
 	int				error_code;
-}					t_fdf;
+	float			zoom;
+	float			z_value;
+	int				shift_x;
+	int				shift_y;
+}						t_fdf;
 
-
-void	*ft_memcpy(void *dst, const void *src, size_t n);
-void	ft_putstr_fd(char *s, int fd);
-void	ft_bzero(void *s, size_t n);
-void	*ft_calloc(size_t count, size_t size);
-void	ft_putstr_fd(char *s, int fd);
-char	*ft_strdup(const char *s);
-size_t	ft_strlen(const char *s);
-int		ft_strncmp(const char *s1, const char *s2, size_t n);
-int		ft_strcmp(const char *s1, const char *s2);
-int		get_next_line(int fd, char **line);
-char	**ft_split(char const *s, char c);
-int		ft_atoi(const char *str);
-int		protect_malloc(void **ptr, size_t lenght);
-char	**free_split(char **strs, int len);
-int		ft_atoi_base(char *str, char *base);
-int		recursive_parse(t_fdf *fdf, unsigned int len);
+void			*ft_memcpy(void *dst, const void *src, size_t n);
+void			ft_putstr_fd(char *s, int fd);
+void			ft_bzero(void *s, size_t n);
+void			*ft_calloc(size_t count, size_t size);
+void			ft_putstr_fd(char *s, int fd);
+char			*ft_strdup(const char *s);
+size_t			ft_strlen(const char *s);
+int				ft_strncmp(const char *s1, const char *s2, size_t n);
+int				ft_strcmp(const char *s1, const char *s2);
+int				get_next_line(int fd, char **line);
+char			**ft_split(char const *s, char c);
+int				ft_atoi(const char *str);
+int				protect_malloc(void **ptr, size_t lenght);
+char			**free_split(char **strs, int len);
+int				ft_atoi_base(char *str, char *base);
+int				recursive_parse(t_fdf *fdf, unsigned int len);
 unsigned int	tab_len(void **tab);
-int		recursive_error(char *str, char **strs, unsigned int len, t_fdf *fdf);
-char	*ft_strndup(const char *s, size_t size);
-char	*ft_str_tolower(char *str);
-char	*ft_strcat(char *dest, const char *src);
-char	*ft_strjoin(char const *s1, char const *s2);
+int				recursive_error(char *str, char **strs,
+					unsigned int len, t_fdf *fdf);
+char			*ft_strndup(const char *s, size_t size);
+char			*ft_str_tolower(char *str);
+char			*ft_strcat(char *dest, const char *src);
+char			*ft_strjoin(char const *s1, char const *s2);
 
 #endif
