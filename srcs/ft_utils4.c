@@ -6,7 +6,7 @@
 /*   By: tcharvet <tcharvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 14:23:41 by tcharvet          #+#    #+#             */
-/*   Updated: 2021/08/13 14:30:41 by tcharvet         ###   ########.fr       */
+/*   Updated: 2021/08/14 15:24:22 by tcharvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,9 @@ void	quit(t_fdf *fdf, char *err)
 	if (mlx->win_ptr)
 		mlx_destroy_window(mlx->ptr, mlx->win_ptr);
 	if (mlx->ptr)
-		free((void *)mlx->ptr);
+	{
+		free(*(void **)mlx->ptr);
+		free(mlx->ptr);
+	}
 	exit(0);
 }

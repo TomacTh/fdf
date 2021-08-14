@@ -6,7 +6,7 @@
 /*   By: tcharvet <tcharvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 15:34:47 by tcharvet          #+#    #+#             */
-/*   Updated: 2021/08/13 19:47:51 by tcharvet         ###   ########.fr       */
+/*   Updated: 2021/08/14 17:30:10 by tcharvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,13 @@ typedef struct s_fdf
 	int				projection;
 }						t_fdf;
 
+typedef struct s_rgb
+{
+	unsigned char	r;
+	unsigned char	g;
+	unsigned char	b;
+}						t_rgb;
+
 void			*ft_memcpy(void *dst, const void *src, size_t n);
 void			ft_putstr_fd(char *s, int fd);
 void			ft_bzero(void *s, size_t n);
@@ -128,6 +135,7 @@ float			get_fmin(float a, float b);
 int				get_imax(int a, int b);
 int				get_imin(int a, int b);
 
+void			bresenham_algo_bonus(t_coordinates coord, t_fdf *fdf);
 void			quit(t_fdf *fdf, char *err);
 int				check_file(char *filename);
 int				check_arg(int ac, char *filename);
