@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_fdf_bonus.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcharvet <tcharvet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tcharvet <tcharvet@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 15:34:47 by tcharvet          #+#    #+#             */
-/*   Updated: 2021/08/14 17:30:10 by tcharvet         ###   ########.fr       */
+/*   Updated: 2021/08/14 23:30:14 by tcharvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,16 @@
 # include <stdio.h>
 
 # define BUFFER_SIZE 4096
-# define ESC_KEY 53
-# define ZOOM 69
-# define DEZOOM 78
-# define SHIFT_RIGHT 124
-# define SHIFT_LEFT 123
-# define SHIFT_UP 126
-# define SHIFT_BOTTOM 125
-# define PROJECTION 35
-# define Z_DEPTH_MORE 6
-# define Z_DEPTH_LESS 2
+# define ESC_KEY 65307 //53
+# define ZOOM 61 //69
+# define DEZOOM 45//78
+# define SHIFT_RIGHT 65363 //124
+# define SHIFT_LEFT 65361//123
+# define SHIFT_UP 65362 //126
+# define SHIFT_BOTTOM 65364 //125
+# define PROJECTION 112 //35
+# define Z_DEPTH_MORE 122 //6
+# define Z_DEPTH_LESS 100 //2
 
 typedef struct s_gnl
 {

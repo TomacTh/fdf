@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_fdf_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcharvet <tcharvet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tcharvet <tcharvet@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 15:33:10 by tcharvet          #+#    #+#             */
-/*   Updated: 2021/08/14 17:27:45 by tcharvet         ###   ########.fr       */
+/*   Updated: 2021/08/14 23:24:05 by tcharvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ int	key_press(int keycode, t_fdf *fdf)
 		toogle(&fdf->projection);
 	else if (keycode == ZOOM || keycode == DEZOOM)
 		zoom_or_dezoom_key(keycode, moove);
-	else if (keycode >= SHIFT_LEFT && keycode <= SHIFT_UP)
+	else if (keycode == SHIFT_LEFT || keycode == SHIFT_UP
+		|| keycode == SHIFT_BOTTOM || keycode == SHIFT_RIGHT)
 		shift_keys(keycode, moove);
 	else if (keycode == Z_DEPTH_LESS || keycode == Z_DEPTH_MORE)
 		z_depth_keys(keycode, moove);
