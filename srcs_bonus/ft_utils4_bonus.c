@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils4_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcharvet <tcharvet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tcharvet <tcharvet@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 17:46:27 by tcharvet          #+#    #+#             */
-/*   Updated: 2021/08/14 17:29:14 by tcharvet         ###   ########.fr       */
+/*   Updated: 2021/12/28 15:35:33 by tcharvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	quit(t_fdf *fdf, char *err)
 		mlx_destroy_window(mlx->ptr, mlx->win_ptr);
 	if (mlx->ptr)
 	{
-		free(*(void **)mlx->ptr);
+		mlx_destroy_display(mlx->ptr);
 		free(mlx->ptr);
 	}
 	exit(0);
