@@ -7,11 +7,11 @@
 - mac: https://github.com/dannywillems/minilibx-mac-osx
 - Then copy `libmlx.a` in `/usr/local/lib` and copy `mlx.h` header in `/user/local/include`
 
-## ** Mac os **
+## **Mac os**
 - *If you are in mac os change LDFLAGS in `Makefile` to:   -framework OpenGL -framework Appkit*
 - For mac os change value Of keys in fdf_bonus.h
 
-## ** Keys **
+## **Keys**
 With `make bonus` you can zoom dezoom translate map and change projection, also change z depth;
 
 * 'd': less depth z
