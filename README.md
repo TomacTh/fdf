@@ -28,3 +28,6 @@ With `make bonus` you can zoom, dezoom, translate map, change projection, and ch
 ![Screenshot from 2022-11-08 12-04-52](https://user-images.githubusercontent.com/43377611/200549551-df1c4579-6dbd-4b66-b1dc-43e3f5d385ce.png)
 ![Screenshot from 2022-11-08 12-05-04](https://user-images.githubusercontent.com/43377611/200549556-92b3f7b8-7929-41d4-8274-28bd06d64181.png)
 ![Screenshot from 2022-11-08 12-06-42](https://user-images.githubusercontent.com/43377611/200549561-21efb061-51c5-47bc-a8a9-2f3f54ce49aa.png)
+
+![68747470733a2f2f692e696d6775722e636f6d2f75755a45644a622e706e67](https://user-images.githubusercontent.com/43377611/200590144-30b9a28e-494f-4cb9-81bf-fa5cb0ec3a54.png)
+
