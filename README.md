@@ -8,7 +8,7 @@
 - Then copy `libmlx.a` in `/usr/local/lib` and copy `mlx.h` header in `/user/local/include`
 
 ## **Mac os**
-- *If you are in mac os change LDFLAGS in `Makefile` to:   -framework OpenGL -framework Appkit*
+- If you are in mac os change `LDFLAGS` in `Makefile` to:   *-framework OpenGL -framework Appkit*
 - For mac os change value Of keys in fdf_bonus.h
 
 ## **Keys**
