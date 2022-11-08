@@ -6,7 +6,7 @@
 #### mac: https://github.com/dannywillems/minilibx-mac-osx
 
 
-#### **The scope of the project is defined** [here](https://cdn.intra.42.fr/pdf/pdf/52998/en.subject.pdf)
+#### *The scope of the project is defined* [here](https://cdn.intra.42.fr/pdf/pdf/52998/en.subject.pdf)
 
 Copy minilibx.a in **/usr/local/lib** and copy mlx.h header in **/user/local/include**
 
