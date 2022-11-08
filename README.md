@@ -1,10 +1,12 @@
-# fdf
+# FDF
 
-# INSTALL
 
 ## Install mini libx in /usr/local/lib copy mlx.h header in /usr/local/include
 #### linux: https://github.com/42Paris/minilibx-linux
 #### mac: https://github.com/dannywillems/minilibx-mac-osx
+
+
+#### [*subject*](https://cdn.intra.42.fr/pdf/pdf/52998/en.subject.pdf)
 
 Copy minilibx.a in **/usr/local/lib** and copy mlx.h header in **/user/local/include**
 
