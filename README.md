@@ -20,4 +20,9 @@ With make bonus you can zoom dezoom translate map and change projection, also ch
 * arrows translate your map;
 
 For mac os change value Of keys in fdf_bonus.h
+
+
 ![Screenshot from 2022-11-08 12-03-43](https://user-images.githubusercontent.com/43377611/200549406-872163da-1acf-4134-aa72-615072e55c6d.png)
+![Screenshot from 2022-11-08 12-04-52](https://user-images.githubusercontent.com/43377611/200549551-df1c4579-6dbd-4b66-b1dc-43e3f5d385ce.png)
+![Screenshot from 2022-11-08 12-05-04](https://user-images.githubusercontent.com/43377611/200549556-92b3f7b8-7929-41d4-8274-28bd06d64181.png)
+![Screenshot from 2022-11-08 12-06-42](https://user-images.githubusercontent.com/43377611/200549561-21efb061-51c5-47bc-a8a9-2f3f54ce49aa.png)
