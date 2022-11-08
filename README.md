@@ -2,13 +2,12 @@
 
 #### *The scope of the project is defined* [here](https://cdn.intra.42.fr/pdf/pdf/52998/en.subject.pdf)
 
-##*To install minilibx:*
+##**To install minilibx:*ù
 - linux: https://github.com/42Paris/minilibx-linux
 - mac: https://github.com/dannywillems/minilibx-mac-osx
+- Then copy `libmlx.a` in `/usr/local/lib` and copy `mlx.h` header in `/user/local/include`
 
-Then copy `libmlx.a` in `/usr/local/lib` and copy `mlx.h` header in `/user/local/include`
-
-If you are in mac os change LDFLAGS in make file to:   -framework OpenGL -framework Appkit
+*If you are in mac os change LDFLAGS in `Makefile` to:   -framework OpenGL -framework Appkit*
 
 With make bonus you can zoom dezoom translate map and change projection, also change z depth;
 
