@@ -2,7 +2,7 @@
 
 #### *The scope of the project is defined* [here](https://cdn.intra.42.fr/pdf/pdf/52998/en.subject.pdf)
 
-##**To install minilibx:**
+## **To install minilibx:**
 - linux: https://github.com/42Paris/minilibx-linux
 - mac: https://github.com/dannywillems/minilibx-mac-osx
 - Then copy `libmlx.a` in `/usr/local/lib` and copy `mlx.h` header in `/user/local/include`
